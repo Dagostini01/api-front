@@ -1,0 +1,40 @@
+<form action="">
+
+  <img src="assets/cliente.png" alt="">
+
+  <input type="text" placeholder="Nome da Empresa" class="form-control" name="nome" [(ngModel)]="empresa.nome">
+  <input type="text" placeholder="Descrição" class="form-control" name="descricao"  [(ngModel)]="empresa.descricao">
+  <input type="text" placeholder="Cnpj" class="form-control" name="cnpj"            [(ngModel)]="empresa.cnpj">
+
+  <input type="button" value="Cadastrar" *ngIf="btnCadastro" class="btn btn-primary"   (click)="cadastrar()">
+  <input type="button" value="Alterar" *ngIf="!btnCadastro" class="btn btn-warning"    (click)="editar()">
+  <input type="button" value="Remover" *ngIf="!btnCadastro" class="btn btn-danger"     (click)="remover()">
+  <input type="button" value="Cancelar" *ngIf="!btnCadastro" class="btn btn-secondary" (click)="cancelar()">
+
+</form>
+
+<table class="table" *ngIf="tabela">
+
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Nome</th>
+      <th>Descrição</th>
+      <th>Cnpj</th>
+      <th>Selecionar</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let e of empresas; index as i">
+      <td>{{i+1}}</td>
+      <td>{{e.nome}}</td>
+      <td>{{e.descricao}}</td>
+      <td>{{e.cnpj}}</td>
+      <td><button class="btn btn-success" (click)="selecionarCliente(i)">Selecionar</button></td>
+    </tr>
+  </tbody>
+
+</table>
+
+<!-- <h1>{{empresa | json}}</h1> -->
